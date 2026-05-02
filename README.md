@@ -51,4 +51,10 @@ The Smart City system is divided into two main components:
 This project is licensed under the ISC License.
 
 ---
-*Created by Ayush Gupta*
+## 🛠️ My Contributions
+
+- Designed and implemented the authentication system including user login, registration, and secure route handling using middleware.
+- Developed backend APIs using a structured MVC architecture (controllers, routes, models).
+- Built the chat/communication module enabling users to send and retrieve messages from the database.
+- Worked on integrating frontend with backend APIs to ensure smooth data flow.
+- Handled debugging and optimization of API responses for better performance.
