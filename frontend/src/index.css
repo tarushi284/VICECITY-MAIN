@@ -1,0 +1,259 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Modern Design System Variables */
+:root {
+  /* Dark Mode (Default) */
+  --primary: #06b6d4;
+  --primary-dark: #0891b2;
+  --primary-light: #22d3ee;
+  --accent: #8b5cf6;
+  --accent-dark: #7c3aed;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --background: #0f172a;
+  --surface: #1e293b;
+  --surface-light: #334155;
+  --glass: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --text-primary: #ffffff;
+  --text-secondary: #cbd5e1;
+}
+
+/* Light Mode Variables */
+:root.light {
+  --background: #f8fafc;
+  --surface: #ffffff;
+  --surface-light: #f1f5f9;
+  --glass: rgba(0, 0, 0, 0.05);
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+}
+
+/* Body Styling */
+body {
+  @apply bg-gray-900 text-white transition-colors duration-300;
+  background-color: var(--background);
+  color: var(--text-primary);
+}
+
+body.light {
+  @apply bg-slate-50 text-gray-900;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+/* Global Scrollbar Hide */
+* {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* Chrome, Safari and Opera */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Glassmorphism Utilities */
+@layer utilities {
+  .glass {
+    @apply bg-white/5 dark:bg-white/5 bg-black/5;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    @apply border border-white/10 dark:border-white/10 border-black/10;
+  }
+
+  .glass-strong {
+    @apply bg-white/10 dark:bg-white/10 bg-black/10;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    @apply border border-white/20 dark:border-white/20 border-black/15;
+  }
+
+  .gradient-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .shadow-glow {
+    @apply shadow-cyan-500/30 dark:shadow-cyan-500/30 shadow-cyan-500/20;
+    box-shadow: 0 0 20px currentColor;
+  }
+
+  .shadow-glow-accent {
+    @apply shadow-violet-500/30 dark:shadow-violet-500/30 shadow-violet-500/20;
+    box-shadow: 0 0 20px currentColor;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+
+  /* Theme-aware text colors */
+  .text-primary {
+    @apply text-white dark:text-white text-gray-900;
+  }
+
+  .text-secondary {
+    @apply text-gray-300 dark:text-gray-300 text-gray-600;
+  }
+
+  .text-muted {
+    @apply text-gray-400 dark:text-gray-400 text-gray-500;
+  }
+
+  /* Theme-aware backgrounds */
+  .bg-surface {
+    @apply bg-gray-800 dark:bg-gray-800 bg-white;
+  }
+
+  .bg-surface-elevated {
+    @apply bg-gray-700 dark:bg-gray-700 bg-gray-50;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mapbox Popup Styling */
+.mapboxgl-popup-content {
+  background: transparent !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+.mapboxgl-popup-close-button {
+  color: white !important;
+  font-size: 20px !important;
+  padding: 8px !important;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mapboxgl-popup-close-button:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.mapboxgl-popup-tip {
+  border-top-color: #1f2937 !important;
+}
+
+/* Modern Button Styles */
+@layer components {
+  .btn-modern {
+    @apply px-6 py-3 rounded-xl font-semibold transition-all duration-300;
+    @apply transform hover:scale-105 active:scale-95;
+  }
+
+  .btn-primary {
+    @apply btn-modern bg-gradient-to-r from-cyan-500 to-blue-500;
+    @apply hover:from-cyan-600 hover:to-blue-600;
+    @apply shadow-lg hover:shadow-cyan-500/50;
+  }
+
+  .btn-accent {
+    @apply btn-modern bg-gradient-to-r from-violet-500 to-purple-500;
+    @apply hover:from-violet-600 hover:to-purple-600;
+    @apply shadow-lg hover:shadow-violet-500/50;
+  }
+
+  .card-modern {
+    background: transparent;
+    /* Fully transparent */
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    /* Light mode border: subtle dark gray */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    @apply rounded-2xl p-6 transition-all duration-300;
+
+    /* Dark mode specific override */
+    .dark & {
+      background: transparent;
+      /* Fully transparent */
+      /* Dark mode border: subtle white */
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Fallback/Blend */
+    @apply hover:border-cyan-500/50 hover:shadow-lg;
+    @apply hover:shadow-cyan-500/20 dark:hover:shadow-cyan-500/20 hover:shadow-cyan-500/10;
+  }
+
+  .input-modern {
+    @apply w-full px-4 py-3;
+    @apply bg-gray-50 dark:bg-gray-800/50;
+    @apply border border-gray-300 dark:border-gray-700;
+    @apply rounded-xl;
+    @apply text-gray-900 dark:text-white;
+    @apply placeholder-gray-500 dark:placeholder-gray-400;
+    @apply focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20;
+    @apply transition-all duration-300;
+  }
+}
+
+/* Custom Cursor Logic */
+@media (match-media: fine),
+(pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
+
+/* Ensure body occupies full height for cursor area */
+body {
+  min-height: 100vh;
+}
